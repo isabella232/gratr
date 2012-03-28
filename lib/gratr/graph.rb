@@ -267,8 +267,10 @@ module GRATR
     def +(other)
       result = self.class.new(self)
       case other
-        when GRATR::Graph : result.merge(other)
-        when GRATR::Arc  : result.add_edge!(other)
+        when GRATR::Graph
+          result.merge(other)
+        when GRATR::Arc
+          result.add_edge!(other)
         else              result.add_vertex!(other)
       end
     end
@@ -276,9 +278,12 @@ module GRATR
     # Remove all vertices in the specified right hand side graph
     def -(other)
       case  other
-        when GRATR::Graph : induced_subgraph(vertices - other.vertices)
-        when GRATR::Arc  : self.class.new(self).remove_edge!(other)
-        else              self.class.new(self).remove_vertex!(other)
+        when GRATR::Graph
+          induced_subgraph(vertices - other.vertices)
+        when GRATR::Arc
+          self.class.new(self).remove_edge!(other)
+        else
+          self.class.new(self).remove_vertex!(other)
       end
     end
 
