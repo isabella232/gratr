@@ -48,7 +48,7 @@ class TestTriagulated < Test::Unit::TestCase #:nodoc:
     berge_mystery.remove_vertex!(:desmond)
     assert berge_mystery.triangulated?
     
-    assert 3, berge_mystery.chromatic_number
+    assert_equal 3, berge_mystery.chromatic_number
   end
   
   def test_house
@@ -62,7 +62,7 @@ class TestTriagulated < Test::Unit::TestCase #:nodoc:
     assert !house.triangulated?
     house.remove_vertex!(:left_foundation) # Becomes a bulls head graph
     assert house.triangulated?
-    assert 3, house.chromatic_number
+    assert_equal 3, house.chromatic_number
   end
   
   # A triangulated, but not interval graph test
@@ -76,7 +76,7 @@ class TestTriagulated < Test::Unit::TestCase #:nodoc:
                      :co, :ci
                    ]
     assert non_interval.triangulated?
-    assert 3, non_interval.chromatic_number
+    assert_equal 3, non_interval.chromatic_number
   end
   
   def test_simple
@@ -95,8 +95,8 @@ class TestTriagulated < Test::Unit::TestCase #:nodoc:
     assert !simple.triangulated?
     simple.add_edge!(:c, :e)
     assert simple.triangulated?
-    assert 3, simple.chromatic_number
-    assert 2, UndirectedGraph[:a, :b].chromatic_number
+    assert_equal 3, simple.chromatic_number
+    assert_equal 2, UndirectedGraph[:a, :b].chromatic_number
   end
   
   def test_simple2
