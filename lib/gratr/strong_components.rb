@@ -113,7 +113,6 @@ module GRATR
       # is not changed.
       def transitive_closure() self.class.new(self).transitive_closure!; end
 
-     private
       def gratr_inner_transitive_closure!  # :nodoc:
         topsort.reverse.each do |u| 
           adjacent(u).each do |v|
